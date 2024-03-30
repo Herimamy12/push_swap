@@ -1,19 +1,24 @@
-NAME = libpush_swap.a
+NAME = push_swap
 
-CC = cc 
+LIBNAME = libpush_swap.a
+
+CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = test.c
+SRCS = test.c main.c
 
 OBJS = $(SRCS:.c=.o)
 
 %.o : %.c
 		$(CC) $(CFLAGS) -o $@ -c $<
 
-all : $(NAME)
+all : $(NAME) fclean
 
-$(NAME) : $(OBJS)
+$(NAME) : $(LIBNAME)
+		$(CC) -o $@ libpush_swap.a ./PRINTF/libftprintf.a $< 
+
+$(LIBNAME) : $(OBJS)
 		make -C ./PRINTF/
 		ar rsc $@ $^
 
@@ -23,8 +28,11 @@ clean :
 
 fclean : clean
 		make fclean -C ./PRINTF/
+		rm -f $(LIBNAME)
+
+ffclean : clean fclean
 		rm -f $(NAME)
 
-re : fclean all
+re : ffclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean ffclean re
