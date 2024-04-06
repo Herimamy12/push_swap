@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void	list_delone(t_list *lst);
+void	list_del(t_list **lst);
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -45,7 +45,7 @@ t_list	*ft_lstcreate(int nb, ...)
 	while (nb-- > 0)
 	{
 		t = (va_arg (args, int));
-		ft_printf ("\nt = %d\n", t);
+		ft_printf ("\nt = %d ** i = %d ** nb = %d\n", t, i, nb);
 		if (nb == i)
 		{
 			ft_printf ("makato\n");
@@ -64,7 +64,7 @@ t_list	*ft_lstcreate(int nb, ...)
 		ft_printf ("LISTE = ");
 		ft_lstprintf (lst);
 		ft_printf ("\n");
-		list_delone (tmp);
+//		list_del (&tmp);
 	}
 	va_end (args);
 	return (lst);
@@ -73,8 +73,14 @@ t_list	*ft_lstcreate(int nb, ...)
 /*void	list_addback(t_list **lst, t_list *new)
 */
 
-void	list_delone(t_list *lst)
+void	list_del(t_list **lst)
 {
-	free (lst->content);
-	free (lst);
+	t_list	*tmp;
+
+	while (lst[0])
+	{
+		tmp = (lst[0])->next;
+		lst[0]->content = NULL;
+		lst[0] = tmp;
+	}
 }
