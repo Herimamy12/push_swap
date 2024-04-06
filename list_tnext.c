@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 void	list_del(t_list **lst);
+t_list	*ft_changeadress(t_list *lst);
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -35,36 +36,41 @@ t_list	*ft_lstcreate(int nb, ...)
 	int		t;
 	int		i;
 	t_list	*lst;
-	t_list	*tmp;
+	t_list	**tmp;
 	va_list	args;
 
-	i = nb - 1;
+	i = 0;
 	lst = NULL;
 	tmp = NULL;
 	va_start (args, nb);
-	while (nb-- > 0)
+	while (i < nb)
 	{
 		t = (va_arg (args, int));
-		ft_printf ("\nt = %d ** i = %d ** nb = %d\n", t, i, nb);
-		if (nb == i)
+		tmp[i] = (t_list *)malloc(sizeof (t_list));
+		if (!tmp[i])
+			return (NULL);
+		if (i == 0)
 		{
 			ft_printf ("makato\n");
 			lst = ft_lstnew (&t);
+			ft_printf ("LISTE prim = ");
+			ft_lstprintf (lst);
+			ft_printf ("\n");
 		}
 		else
 		{
 			ft_printf ("makary e\n");
-			tmp = ft_lstnew (&t);
+			tmp[i] = ft_lstnew (&t);
 			ft_printf ("LISTE tmp = ");
-			ft_lstprintf (lst);
+			ft_lstprintf (tmp[i]);
 			ft_printf ("\n");
 		}
-		if (tmp)
-			ft_lstadd_back (&lst, tmp);
+		if (tmp[i])
+			ft_lstadd_back (&lst, tmp[i]);
 		ft_printf ("LISTE = ");
 		ft_lstprintf (lst);
 		ft_printf ("\n");
-//		list_del (&tmp);
+		i++;
 	}
 	va_end (args);
 	return (lst);
@@ -83,4 +89,15 @@ void	list_del(t_list **lst)
 		lst[0]->content = NULL;
 		lst[0] = tmp;
 	}
+}
+
+t_list	*ft_changeadress(t_list *lst)
+{
+	t_list	*new_adress;
+
+	new_adress = (t_list *)malloc(sizeof (t_list));
+	if (!new_adress)
+		return (NULL);
+	lst = new_adress;
+	return (lst);
 }
