@@ -6,7 +6,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = main.c push_swap.c
+SRCS = main.c push_swap.c list_utils.c list_next.c list_tnext.c 
 
 OBJS = $(SRCS:.c=.o)
 
