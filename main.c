@@ -12,12 +12,20 @@
 
 #include "push_swap.h"
 
+void	check_error(int argc, char **argv)
+{
+	if (argc == 2)
+//#		check_afa
+	else
+		chek_argBDB
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
 		return (0);
 	else
-		ft_printf("%s\n", argv[0]);
+		check_error (argc, argv);
 	return 0;
 }
 
