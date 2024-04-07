@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void	list_del(t_list **lst);
-t_list	*ft_changeadress(t_list *lst);
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -33,71 +31,55 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 t_list	*ft_lstcreate(int nb, ...)
 {
-	int		t;
 	int		i;
+	int		*t;
 	t_list	*lst;
-	t_list	**tmp;
+	t_list	*tmp;
 	va_list	args;
 
 	i = 0;
 	lst = NULL;
 	tmp = NULL;
 	va_start (args, nb);
-	while (i < nb)
+	while (i++ < nb)
 	{
-		t = (va_arg (args, int));
-		tmp[i] = (t_list *)malloc(sizeof (t_list));
-		if (!tmp[i])
+		t = (int *)malloc(sizeof (int));
+		if (!t)
 			return (NULL);
+		*t = (va_arg (args, int));
 		if (i == 0)
-		{
-			ft_printf ("makato\n");
-			lst = ft_lstnew (&t);
-			ft_printf ("LISTE prim = ");
-			ft_lstprintf (lst);
-			ft_printf ("\n");
-		}
+			lst = ft_lstnew (t);
 		else
-		{
-			ft_printf ("makary e\n");
-			tmp[i] = ft_lstnew (&t);
-			ft_printf ("LISTE tmp = ");
-			ft_lstprintf (tmp[i]);
-			ft_printf ("\n");
-		}
-		if (tmp[i])
-			ft_lstadd_back (&lst, tmp[i]);
-		ft_printf ("LISTE = ");
-		ft_lstprintf (lst);
-		ft_printf ("\n");
-		i++;
+			tmp = ft_lstnew (t);
+		ft_lstadd_back (&lst, tmp);
 	}
 	va_end (args);
 	return (lst);
 }
 
-/*void	list_addback(t_list **lst, t_list *new)
-*/
-
-void	list_del(t_list **lst)
+t_list	*ft_lstfirst(t_list *lst)
 {
-	t_list	*tmp;
+	t_list	*first;
 
-	while (lst[0])
-	{
-		tmp = (lst[0])->next;
-		lst[0]->content = NULL;
-		lst[0] = tmp;
-	}
+	if (!lst)
+		return (NULL);
+	first = ft_lstnew (lst->content);
+	return (first);
 }
 
-t_list	*ft_changeadress(t_list *lst)
+t_list	*ft_dellast(t_list *lst)
 {
-	t_list	*new_adress;
+	t_list	*tmp;
+	t_list	*list;
 
-	new_adress = (t_list *)malloc(sizeof (t_list));
-	if (!new_adress)
+	if (!lst)
 		return (NULL);
-	lst = new_adress;
-	return (lst);
+	list = NULL;
+	while (lst->next != NULL)
+	{
+		tmp = ft_lstnew (lst->content);
+		ft_lstadd_back (&list, tmp);
+		lst = lst->next;
+	}
+	return (list);
 }
