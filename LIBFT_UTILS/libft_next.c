@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_next.c                                   :+:      :+:    :+:   */
+/*   libft_next.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nherimam <nherimam@student.42antanana      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 08:54:28 by nherimam          #+#    #+#             */
-/*   Updated: 2024/04/08 08:54:31 by nherimam         ###   ########.fr       */
+/*   Created: 2024/04/08 13:36:16 by nherimam          #+#    #+#             */
+/*   Updated: 2024/04/08 13:36:19 by nherimam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putlist(t_list *lst)
+int	ft_count_word(char const *s, char c)
 {
-	int	value;
-	int	*t;
+	int		count;
+	char	*tmp;
 
-	value = 0;
-	if (!lst || lst == NULL)
+	if (!s)
 		return (0);
-	while (lst->next != NULL)
+	count = 0;
+	tmp = (char *)s;
+	while (*tmp)
 	{
-		t = lst->content;
-		value += ft_putnbr (*t);
-		ft_putchar (' ');
-		lst = lst->next;
+		while (*tmp == c)
+			tmp++;
+		if (*tmp != c)
+			count++;
+		while (*tmp != c)
+			tmp++;
 	}
-	t = lst->content;
-	value += ft_putnbr (*t);
-	return (value);
+	return (count);
 }

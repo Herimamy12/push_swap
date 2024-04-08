@@ -17,6 +17,8 @@
 # include <stdarg.h>
 # include <unistd.h>
 
+# include "../LIBFT_UTILS/libft.h"
+
 typedef struct s_list
 {
 	void			*content;
@@ -24,7 +26,6 @@ typedef struct s_list
 }					t_list;
 
 int	ft_printf(const char *str, ...);
-int	ft_strchr(char *csp, char set);
 int	ft_check(char c, va_list args);
 int	ft_putchar(char c);
 int	ft_putstr(char *str);

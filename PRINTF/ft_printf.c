@@ -36,18 +36,24 @@ int	ft_printf(const char *str, ...)
 	return (valr);
 }
 
-int	ft_strchr(char *csp, char set)
+int	ft_putlist(t_list *lst)
 {
-	int	i;
+	int	value;
+	int	*t;
 
-	i = 0;
-	while (i < 9)
+	value = 0;
+	if (!lst || lst == NULL)
+		return (0);
+	while (lst->next != NULL)
 	{
-		if (csp[i] == set)
-			return (1);
-		i++;
+		t = lst->content;
+		value += ft_putnbr (*t);
+		ft_putchar (' ');
+		lst = lst->next;
 	}
-	return (0);
+	t = lst->content;
+	value += ft_putnbr (*t);
+	return (value);
 }
 
 int	ft_check(char c, va_list args)

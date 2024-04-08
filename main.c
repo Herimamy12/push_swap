@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	ft_printf ("%l\n\n", pile_b);
 	ft_reverse_rotate (&pile_b);
 	ft_printf ("%l\n\n", pile_b);
-	ft_rotate (&pile_b);
+	ft_swap (&pile_b);
 	ft_printf ("%l\n\n", pile_b);
 	return (0);
 }
@@ -54,6 +54,7 @@ int	main(void)
 {
 	int	nb;
 
-	nb = ft_atol(" 	+12");
-	ft_printf ("%d", nb);
+	nb = ft_count_word ("test et test", ' ');
+	ft_printf ("%d\n", nb);
+	return (0);
 }

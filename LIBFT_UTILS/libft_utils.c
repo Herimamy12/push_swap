@@ -40,3 +40,63 @@ long	ft_atol(const char *nptr)
 	nb *= sign;
 	return (nb);
 }
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	size_t	lens;
+	char	*str;
+
+	lens = ft_strlen (s) - start;
+	if (lens >= len)
+		str = (char *)malloc(sizeof(char) * (len + 1));
+	else
+		str = (char *)malloc(sizeof(char) * (lens + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = s[start++];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	*tmp;
+
+	tmp = (char *)s;
+	if (!tmp)
+		return (NULL);
+	while (*tmp)
+	{
+		if (*tmp == c)
+			return (tmp);
+		tmp++;
+	}
+	if (c == '\0')
+		return (tmp);
+	return (NULL);
+}
+
+/*char	**ft_split(char const *s, char c)
+{
+	int	i;
+
+	if (!s)
+		return (NULL);
+	i = ft_count_word (s, c);
+}*/

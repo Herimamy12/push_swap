@@ -4,8 +4,7 @@ NAME = libftprintf.a
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = ft_printf.c ft_printf_utils.c \
-		ft_printf_next.c
+SRCS = ft_printf.c ft_printf_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

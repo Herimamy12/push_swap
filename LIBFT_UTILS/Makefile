@@ -4,7 +4,7 @@ NAME = libft.a
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = libft_utils.c
+SRC = libft_utils.c libft_next.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -25,4 +25,3 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re
-	
