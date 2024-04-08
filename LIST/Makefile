@@ -1,24 +1,24 @@
 CC = gcc
 
-NAME = libftprintf.a
-
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = ft_printf.c ft_printf_utils.c \
-		ft_printf_next.c
+NAME = list.a
 
-OBJS = $(SRCS:.c=.o)
+SRC = list_utils.c list_next.c \
+		list_tnext.c
+
+OBJ = $(SRC:.c=.o)
 
 %.o : %.c
 		$(CC) $(CFLAGS) -o $@ -c $<
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJ)
 		ar rsc $@ $^
 
 clean :
-		rm -f $(OBJS)
+		rm -f $(OBJ)
 
 fclean : clean
 		rm -f $(NAME)

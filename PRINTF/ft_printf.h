@@ -17,6 +17,12 @@
 # include <stdarg.h>
 # include <unistd.h>
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
 int	ft_printf(const char *str, ...);
 int	ft_strchr(char *csp, char set);
 int	ft_check(char c, va_list args);
@@ -27,5 +33,6 @@ int	ft_putaddress(unsigned long nb);
 int	ft_putunsigned(unsigned int nb);
 int	ft_printaddress(unsigned long nb);
 int	ft_puthexa(unsigned int nb, char c);
+int	ft_putlist(t_list *lst);
 
 #endif

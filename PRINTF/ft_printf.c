@@ -23,7 +23,7 @@ int	ft_printf(const char *str, ...)
 	va_start (args, str);
 	while (str[i])
 	{
-		if (str[i] == '%' && ft_strchr ("cspdiuxX%", str[i + 1]))
+		if (str[i] == '%' && ft_strchr ("cspdliuxX%", str[i + 1]))
 		{
 			valr += ft_check (str[i + 1], args);
 			i++;
@@ -60,6 +60,8 @@ int	ft_check(char c, va_list args)
 		return (ft_putaddress (va_arg (args, unsigned long)));
 	if (c == 'd' || c == 'i')
 		return (ft_putnbr (va_arg (args, int)));
+	if (c == 'l')
+		return (ft_putlist (va_arg (args, t_list *)));
 	if (c == 'u')
 		return (ft_putunsigned(va_arg (args, unsigned int)));
 	if (c == 'x' || c == 'X')

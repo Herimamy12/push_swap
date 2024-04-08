@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printf_next.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nherimam <nherimam@student.42antanana      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 10:30:22 by nherimam          #+#    #+#             */
-/*   Updated: 2024/04/05 10:30:35 by nherimam         ###   ########.fr       */
+/*   Created: 2024/04/08 08:54:28 by nherimam          #+#    #+#             */
+/*   Updated: 2024/04/08 08:54:31 by nherimam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "ft_printf.h"
 
-# include "./LIBFT_UTILS/libft.h"
-# include "./LIST/list.h"
-# include "./PRINTF/ft_printf.h"
+int	ft_putlist(t_list *lst)
+{
+	int	value;
+	int	*t;
 
-void	ft_swap(t_list **lst);
-void	ft_push(t_list	**pile_src, t_list **pile_dest);
-void	ft_rotate(t_list **lst);
-void	ft_reverse_rotate(t_list **lst);
-
-#endif
+	value = 0;
+	if (!lst || lst == NULL)
+		return (0);
+	while (lst->next != NULL)
+	{
+		t = lst->content;
+		value += ft_putnbr (*t);
+		ft_putchar (' ');
+		lst = lst->next;
+	}
+	t = lst->content;
+	value += ft_putnbr (*t);
+	return (value);
+}

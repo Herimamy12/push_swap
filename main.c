@@ -12,10 +12,17 @@
 
 #include "push_swap.h"
 
+/*void	first_check (char *argv)
+{
+	int	nb_word;
+
+	nb_word = ft_count_word (argv);
+}
+
 void	check_error(int argc, char **argv)
 {
 	if (argc == 2)
-//#		check_afa
+		first_check (argv[1]);
 	else
 		chek_argBDB
 }
@@ -27,24 +34,26 @@ int	main(int argc, char **argv)
 	else
 		check_error (argc, argv);
 	return 0;
-}
+}*/
 
 /*int	main(void)
 {
 	t_list	*pile_b;
-//	t_list	*pile_a;
 
-//	pile_a = NULL;
-	pile_b = ft_lstcreate (6, 9, 7, 5, 1, 4, 2);
-//	pile_b = ft_lstcreate (1, 8, 3);
-	ft_lstprintf (pile_b);
-	ft_printf ("\n");
-	ft_rotate (&pile_b);
-	ft_lstprintf (pile_b);
-	ft_printf ("\n");
+	pile_b = ft_lstcreate (6, -4, 7, 5, 1, 4, 2);
+	ft_printf ("%l\n\n", pile_b);
 	ft_reverse_rotate (&pile_b);
-	ft_lstprintf (pile_b);
-	ft_printf ("\n");
+	ft_printf ("%l\n\n", pile_b);
+	ft_rotate (&pile_b);
+	ft_printf ("%l\n\n", pile_b);
 	return (0);
 }
 */
+
+int	main(void)
+{
+	int	nb;
+
+	nb = ft_atol(" 	+12");
+	ft_printf ("%d", nb);
+}

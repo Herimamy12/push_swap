@@ -10,23 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	ft_lstprintf(t_list *lst)
-{
-	int	*t;
-
-	if (!lst || lst == NULL)
-		return ;
-	while (lst->next != NULL)
-	{
-		t = lst->content;
-		ft_printf ("%d ", *t);
-		lst = lst->next;
-	}
-	t = lst->content;
-	ft_printf ("%d", *t);
-}
+#include "list.h"
 
 t_list	*ft_lstnew(void *content)
 {
