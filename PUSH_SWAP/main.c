@@ -12,10 +12,13 @@
 
 #include "push_swap.h"
 
-/*void	check_error(int argc, char **argv)
-{
-	############
-}*/
+/*##############################################*/
+/*												*/
+/*												*/
+/*				MAIN_TEST_FUNCTION				*/
+/*												*/
+/*												*/
+/*##############################################*/
 
 int	main(int argc, char **argv)
 {
@@ -25,6 +28,8 @@ int	main(int argc, char **argv)
 	{
 		if (first_check_error (argv[1]))
 			return (0);
+		else if (second_check_error (argv[1]))
+			return (0);
 		else
 			ft_printf ("Mety\n");
 //			crete_pile
@@ -33,6 +38,14 @@ int	main(int argc, char **argv)
 		second_check_error (argc, argv);*/
 	return 0;
 }
+
+/*##############################################*/
+/*												*/
+/*												*/
+/*				  MAIN_TEST_PILE				*/
+/*												*/
+/*												*/
+/*##############################################*/
 
 /*int	main(void)
 {
@@ -47,6 +60,15 @@ int	main(int argc, char **argv)
 	return (0);
 }
 */
+
+
+/*##############################################*/
+/*												*/
+/*												*/
+/*				MAIN_TEST_FUNCTION				*/
+/*												*/
+/*												*/
+/*##############################################*/
 
 /*int	main(void)
 {
