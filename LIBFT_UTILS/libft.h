@@ -21,5 +21,6 @@ size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
 int		ft_count_word(char const *s, char c);
+int		ft_isdigit(int c);
 
 #endif

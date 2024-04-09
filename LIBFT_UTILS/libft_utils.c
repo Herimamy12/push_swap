@@ -92,11 +92,30 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-/*char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	int	i;
+	int		i;
+	int		len;
+	char	**str;
 
-	if (!s)
+	str = (char **)malloc(sizeof (char *) * (ft_count_word (s, c) + 1));
+	if (!s || !str)
 		return (NULL);
-	i = ft_count_word (s, c);
-}*/
+	i = 0;
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
+		{
+			if (ft_strchr (s, c))
+				len = ft_strchr (s, c) - s;
+			else
+				len = ft_strlen (s);
+			str[i++] = ft_substr (s, 0, len);
+			s += len;
+		}
+	}
+	str[i] = NULL;
+	return (str);
+}

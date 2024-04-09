@@ -2,6 +2,8 @@ CC = gcc
 
 NAME = libftprintf.a
 
+LIBFT = ../LIBFT_UTILS/libft.a
+
 CFLAGS = -Wall -Werror -Wextra
 
 SRCS = ft_printf.c ft_printf_utils.c
@@ -13,7 +15,10 @@ OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(LIBFT) :
+		make -C ../LIBFT_UTILS/
+
+$(NAME) : $(OBJS) $(LIBFT)
 		ar rsc $@ $^
 
 clean :

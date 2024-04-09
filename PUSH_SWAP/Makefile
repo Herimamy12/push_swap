@@ -6,7 +6,8 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = main.c push_swap.c push_swap_utils.c
+SRCS = main.c push_swap.c push_swap_utils.c \
+		push_swap_next.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -17,26 +18,26 @@ all : $(NAME) fclean
 
 $(NAME) : $(LIBNAME)
 		$(CC) -o $@ libpush_swap.a \
-		./LIBFT_UTILS/libft.a \
-		./LIST/list.a \
-		./PRINTF/libftprintf.a $< 
+		../PRINTF/libftprintf.a \
+		../LIBFT_UTILS/libft.a \
+		../LIST/list.a
 
 $(LIBNAME) : $(OBJS)
-		make -C ./LIBFT_UTILS/
-		make -C ./LIST/
-		make -C ./PRINTF/
+		make -C ../LIBFT_UTILS/
+		make -C ../PRINTF/
+		make -C ../LIST/
 		ar rsc $@ $^
 
 clean :
-		make clean -C ./LIBFT_UTILS/
-		make clean -C ./LIST/
-		make clean -C ./PRINTF/
+		make clean -C ../LIBFT_UTILS/
+		make clean -C ../PRINTF/
+		make clean -C ../LIST/
 		rm -f $(OBJS)
 
 fclean : clean
-		make fclean -C ./LIBFT_UTILS/
-		make fclean -C ./LIST/
-		make fclean -C ./PRINTF/
+		make fclean -C ../LIBFT_UTILS/
+		make fclean -C ../PRINTF/
+		make fclean -C ../LIST/
 		rm -f $(LIBNAME)
 
 ffclean : clean fclean

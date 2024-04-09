@@ -14,21 +14,26 @@
 
 int	ft_count_word(char const *s, char c)
 {
-	int		count;
-	char	*tmp;
+	int	i;
+	int	count;
 
 	if (!s)
 		return (0);
+	i = 0;
 	count = 0;
-	tmp = (char *)s;
-	while (*tmp)
+	while (s[i] != '\0')
 	{
-		while (*tmp == c)
-			tmp++;
-		if (*tmp != c)
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] && (s[i] != c))
 			count++;
-		while (*tmp != c)
-			tmp++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
 	return (count);
+}
+
+int	ft_isdigit(int c)
+{
+	return ('0' <= c && c <= '9');
 }

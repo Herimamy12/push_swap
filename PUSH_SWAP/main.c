@@ -12,29 +12,27 @@
 
 #include "push_swap.h"
 
-/*void	first_check (char *argv)
+/*void	check_error(int argc, char **argv)
 {
-	int	nb_word;
-
-	nb_word = ft_count_word (argv);
-}
-
-void	check_error(int argc, char **argv)
-{
-	if (argc == 2)
-		first_check (argv[1]);
-	else
-		chek_argBDB
-}
+	############
+}*/
 
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
 		return (0);
-	else
-		check_error (argc, argv);
+	if (argc == 2)
+	{
+		if (first_check_error (argv[1]))
+			return (0);
+		else
+			ft_printf ("Mety\n");
+//			crete_pile
+	}
+	/*else
+		second_check_error (argc, argv);*/
 	return 0;
-}*/
+}
 
 /*int	main(void)
 {
@@ -50,11 +48,20 @@ int	main(int argc, char **argv)
 }
 */
 
-int	main(void)
+/*int	main(void)
 {
-	int	nb;
+	int		i;
+	char	*nb;
+	char	**str;
 
-	nb = ft_count_word ("test et test", ' ');
-	ft_printf ("%d\n", nb);
+	i = 0;
+	nb = (char *)malloc(sizeof (char) * 19);
+	if (!nb)
+		return (0);
+	nb = "  baby dou belou  ";
+	str = ft_split (nb, ' ');
+	while (i < 4)
+		ft_printf ("%s\n", str[i++]);
 	return (0);
 }
+*/
