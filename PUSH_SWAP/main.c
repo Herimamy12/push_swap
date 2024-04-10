@@ -11,6 +11,14 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
+/*
+t_list	*create_stack(int argc, char **argv)
+{
+	t_list	*stack_a;
+
+	if (argc == 2)
+}*/
 
 /*##############################################*/
 /*												*/
@@ -21,22 +29,15 @@
 /*##############################################*/
 
 int	main(int argc, char **argv)
-{
-	if (argc == 1)
+{/*
+	t_list	*stack_a;
+	t_list	*stack_b;*/
+
+	if (error_handling (argc, argv))
 		return (0);
-	if (argc == 2)
-	{
-		if (first_check_error (argv[1]))
-			return (0);
-		else if (second_check_error (argv[1]))
-			return (0);
-		else
-			ft_printf ("Mety\n");
-//			crete_pile
-	}
-	/*else
-		second_check_error (argc, argv);*/
-	return 0;
+//	stack_a = create_stack (argc, argv);
+	ft_printf ("Afaka tao e");
+	return (0);
 }
 
 /*##############################################*/
@@ -60,7 +61,6 @@ int	main(int argc, char **argv)
 	return (0);
 }
 */
-
 
 /*##############################################*/
 /*												*/

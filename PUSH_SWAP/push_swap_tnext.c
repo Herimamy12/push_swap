@@ -11,3 +11,20 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	error_handling(int argc, char **argv)
+{
+	if (argc == 1)
+		return (42);
+	if (argc == 2)
+	{
+		if (first_check_error (argv[1]))
+			return (42);
+		else if (second_check_error (argv[1]))
+			return (42);
+	}
+	else
+		if (third_check_error (argc, argv))
+			return (42);
+	return (0);
+}
