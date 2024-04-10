@@ -14,29 +14,17 @@
 
 int	first_check_error(char *argv)
 {
-	int		i;
 	int		nb_word;
 	char	**av;
-	size_t	j;
 
-	i = 0;
 	nb_word = ft_count_word (argv, ' ');
 	av = ft_split (argv, ' ');
-	while (i < nb_word)
+	if (simplify_first_check_error (av, nb_word))
 	{
-		j = 0;
-		while (j < ft_strlen (av[i]))
-		{
-			if (av[i][j] == '-' || av[i][j] == '+')
-				j++;
-			if (!ft_isdigit (av[i][j++]))
-			{
-				ft_printf ("Error");
-				return (42);
-			}
-		}
-		i++;
+		free (av);
+		return (42);
 	}
+	free (av);
 	return (0);
 }
 
@@ -58,8 +46,10 @@ int	second_check_error(char *argv)
 		tab[i] = ft_atol (av[i]);
 		i++;
 	}
+	free (av);
 	if (get_error (tab, nb_word))
 		return (42);
+	free (tab);
 	return (0);
 }
 
@@ -74,14 +64,15 @@ int	get_error(long *tab, int nb_word)
 		j = i + 1;
 		if ((tab[i] < -2147483648 || 2147483647 < tab[i]))
 		{
-			ft_printf ("Error");
+			ft_printf ("Error\n");
 			return (42);
 		}
 		while (j < nb_word)
 		{
 			if (tab[i] == tab[j++])
 			{
-				ft_printf ("Error");
+				ft_printf ("Error\n");
+				free (tab);
 				return (42);
 			}
 		}
@@ -104,17 +95,13 @@ int	third_check_error(int argc, char **argv)
 		i++;
 	}
 	if (next_get_error (argc, argv))
-	{
-		ft_printf ("Error");
 		return (42);
-	}
 	return (0);
 }
 
 int	next_get_error(int argc, char **argv)
 {
 	int		i;
-	int		j;
 	long	*tab;
 
 	i = 1;
@@ -126,14 +113,8 @@ int	next_get_error(int argc, char **argv)
 		tab[i - 1] = ft_atol (argv[i]);
 		i++;
 	}
-	i = 0;
-	while (i < (argc - 1))
-	{
-		j = i + 1;
-		while (j < (argc - 1))
-			if (tab[i] == tab[j++])
-				return (42);
-		i++;
-	}
+	if (get_error (tab, (argc - 1)))
+		return (42);
+	free (tab);
 	return (0);
 }

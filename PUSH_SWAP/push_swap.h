@@ -27,5 +27,6 @@ int		get_error(long *tab, int nb_word);
 int		third_check_error(int argc, char **argv);
 int		next_get_error(int argc, char **argv);
 int		error_handling(int argc, char **argv);
+int		simplify_first_check_error(char **av, int nb_word);
 
 #endif

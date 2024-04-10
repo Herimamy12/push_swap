@@ -12,6 +12,30 @@
 
 #include "push_swap.h"
 
+int	simplify_first_check_error(char **av, int nb_word)
+{
+	int		i;
+	size_t	j;
+
+	i = 0;
+	while (i < nb_word)
+	{
+		j = 0;
+		while (j < ft_strlen (av[i]))
+		{
+			if (av[i][j] == '-' || av[i][j] == '+')
+				j++;
+			if (!ft_isdigit (av[i][j++]))
+			{
+				ft_printf ("Error\n");
+				return (42);
+			}
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	error_handling(int argc, char **argv)
 {
 	if (argc == 1)
