@@ -60,7 +60,6 @@ void	free_double_char(char **av)
 	while (av[i] != NULL)
 	{
 		free (av[i]);
-		av[i] = NULL;
 		i++;
 	}
 	free (av);

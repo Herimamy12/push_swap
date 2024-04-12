@@ -12,13 +12,6 @@
 
 #include "push_swap.h"
 #include <limits.h>
-/*
-t_list	*create_stack(int argc, char **argv)
-{
-	t_list	*stack_a;
-
-	if (argc == 2)
-}*/
 
 /*##############################################*/
 /*												*/
@@ -29,15 +22,14 @@ t_list	*create_stack(int argc, char **argv)
 /*##############################################*/
 
 int	main(int argc, char **argv)
-{/*
+{
 	t_list	*stack_a;
-	t_list	*stack_b;*/
+//	t_list	*stack_b;
 
 	if (error_handling (argc, argv))
 		return (0);
-//	stack_a = create_stack (argc, argv);
-	ft_printf ("Afaka tao\n");
-//	free_double_char(argv);
+	stack_a = create_stack (argc, argv);
+	ft_printf ("Afaka tao\nstack_a = %l\n", stack_a);
 	return (0);
 }
 
