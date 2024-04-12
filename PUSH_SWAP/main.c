@@ -29,7 +29,10 @@ int	main(int argc, char **argv)
 	if (error_handling (argc, argv))
 		return (0);
 	stack_a = create_stack (argc, argv);
-	ft_printf ("Afaka tao\nstack_a = %l\n", stack_a);
+	ft_printf ("stack_a = %l\n", stack_a);
+	ft_swap (&stack_a);
+	ft_printf ("stack_a = %l\n", stack_a);
+	ft_free_lst (stack_a);
 	return (0);
 }
 

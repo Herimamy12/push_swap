@@ -29,8 +29,10 @@ int		next_get_error(int argc, char **argv);
 int		error_handling(int argc, char **argv);
 int		simplify_first_check_error(char **av, int nb_word);
 void	free_double_char(char **av);
-int		*first_step_tab(char *argv);
+int		*first_step_tab(int nb_word, char *argv);
 t_list	*first_create(int nb_word, int *tab);
 t_list	*create_stack(int argc, char **argv);
+void	ft_free_lst(t_list *lst);
+int		*second_step_tab(int nb_word, char **argv);
 
 #endif
