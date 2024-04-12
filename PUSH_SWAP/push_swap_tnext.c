@@ -15,21 +15,20 @@
 int	simplify_first_check_error(char **av, int nb_word)
 {
 	int		i;
-	size_t	j;
+	int		j;
+	int		len;
 
 	i = 0;
 	while (i < nb_word)
 	{
 		j = 0;
-		while (j < ft_strlen (av[i]))
+		len = ft_strlen (av[i]);
+		while (j < len)
 		{
 			if (av[i][j] == '-' || av[i][j] == '+')
 				j++;
 			if (!ft_isdigit (av[i][j++]))
-			{
-				ft_printf ("Error\n");
 				return (42);
-			}
 		}
 		i++;
 	}
@@ -51,4 +50,18 @@ int	error_handling(int argc, char **argv)
 		if (third_check_error (argc, argv))
 			return (42);
 	return (0);
+}
+
+void	free_double_char(char **av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i] != NULL)
+	{
+		free (av[i]);
+		av[i] = NULL;
+		i++;
+	}
+	free (av);
 }

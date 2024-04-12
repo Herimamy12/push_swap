@@ -28,5 +28,6 @@ int		third_check_error(int argc, char **argv);
 int		next_get_error(int argc, char **argv);
 int		error_handling(int argc, char **argv);
 int		simplify_first_check_error(char **av, int nb_word);
+void	free_double_char(char **av);
 
 #endif

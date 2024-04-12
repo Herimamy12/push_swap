@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 		return (0);
 //	stack_a = create_stack (argc, argv);
 	ft_printf ("Afaka tao\n");
+//	free_double_char(argv);
 	return (0);
 }
 

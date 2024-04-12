@@ -21,10 +21,12 @@ int	first_check_error(char *argv)
 	av = ft_split (argv, ' ');
 	if (simplify_first_check_error (av, nb_word))
 	{
-		free (av);
+
+		ft_printf ("Error\n");
+		free_double_char (av);
 		return (42);
 	}
-	free (av);
+	free_double_char (av);
 	return (0);
 }
 
@@ -46,7 +48,7 @@ int	second_check_error(char *argv)
 		tab[i] = ft_atol (av[i]);
 		i++;
 	}
-	free (av);
+	free_double_char (av);
 	if (get_error (tab, nb_word))
 		return (42);
 	free (tab);
