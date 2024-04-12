@@ -21,7 +21,6 @@ int	first_check_error(char *argv)
 	av = ft_split (argv, ' ');
 	if (simplify_first_check_error (av, nb_word))
 	{
-
 		ft_printf ("Error\n");
 		free_double_char (av);
 		return (42);
