@@ -33,5 +33,7 @@ t_list	*first_step_tab(int nb_word, char *argv);
 t_list	*create_stack(int argc, char **argv);
 void	ft_free_lst(t_list *lst);
 t_list	*second_step_create(int nb_word, char **argv);
+int		is_sort(t_list *stack_a);
+void	push_swap(t_list **stack_a, t_list **stack_b);
 
 #endif
