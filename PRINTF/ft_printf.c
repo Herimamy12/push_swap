@@ -39,20 +39,17 @@ int	ft_printf(const char *str, ...)
 int	ft_putlist(t_list *lst)
 {
 	int	value;
-	int	*t;
 
 	value = 0;
 	if (!lst || lst == NULL)
 		return (0);
 	while (lst->next != NULL)
 	{
-		t = lst->content;
-		value += ft_putnbr (*t);
+		value += ft_putnbr (lst->content);
 		ft_putchar (' ');
 		lst = lst->next;
 	}
-	t = lst->content;
-	value += ft_putnbr (*t);
+	value += ft_putnbr (lst->content);
 	return (value);
 }
 

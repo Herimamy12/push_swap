@@ -12,11 +12,11 @@
 
 #include "list.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*new;
 
-	new = (t_list *)malloc(sizeof (t_list));
+	new = malloc(sizeof (t_list));
 	if (!new)
 		return (NULL);
 	new->content = content;
@@ -26,13 +26,7 @@ t_list	*ft_lstnew(void *content)
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*tmp;
-
-	tmp = (t_list *)malloc(sizeof (t_list));
-	if (!tmp)
-		return ;
-	tmp = *lst;
-	new->next = tmp;
+	new->next = *lst;
 	*lst = new;
 }
 
@@ -47,4 +41,14 @@ int	ft_lstsize(t_list *lst)
 		lst = lst->next;
 	}
 	return (i);
+}
+
+t_list	*ft_lstfirst(t_list *lst)
+{
+	t_list	*first;
+
+	if (!lst)
+		return (NULL);
+	first = ft_lstnew (lst->content);
+	return (first);
 }

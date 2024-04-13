@@ -27,30 +27,35 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		lst[0] = new;
 }
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+t_list	*ft_dellast(t_list *lst)
 {
-	del (lst->content);
+	t_list	*tmp;
+	t_list	*tmps;
+	t_list	*list;
+
+	if (!lst)
+		return (NULL);
+	list = NULL;
+	while (lst->next != NULL)
+	{
+		tmp = ft_lstnew (lst->content);
+		ft_lstadd_back (&list, tmp);
+		tmps = lst->next;
+		free (lst);
+		lst = tmps;
+	}
 	free (lst);
+	return (list);
 }
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+t_list	*ft_delfirst(t_list *lst)
 {
 	t_list	*tmp;
 
-	while (lst[0])
-	{
-		tmp = lst[0]->next;
-		del (lst[0]->content);
-		free (lst[0]);
-		lst[0] = tmp;
-	}
-}
-
-void	ft_lstiter(t_list *lst, void (*f)(void *))
-{
-	while (lst)
-	{
-		f (lst->content);
-		lst = lst->next;
-	}
+	if (!lst)
+		return (NULL);
+	tmp = lst->next;
+	free (lst);
+	lst = tmp;
+	return (lst);
 }

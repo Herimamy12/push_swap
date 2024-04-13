@@ -15,6 +15,7 @@
 void	ft_swap(t_list **lst)
 {
 	t_list	*tmp;
+	t_list	*tmps;
 	t_list	*tmp2;
 
 	if (!lst[0])
@@ -22,9 +23,13 @@ void	ft_swap(t_list **lst)
 	if (ft_lstsize (lst[0]) == 1)
 		return ;
 	tmp = ft_lstfirst (lst[0]);
-	lst[0] = (lst[0])->next;
+	tmps = (lst[0])->next;
+	free (lst[0]);
+	lst[0] = tmps;
 	tmp2 = ft_lstfirst (lst[0]);
-	lst[0] = (lst[0])->next;
+	tmps = (lst[0])->next;
+	free (lst[0]);
+	lst[0] = tmps;
 	tmp->next = lst[0];
 	tmp2->next = tmp;
 	lst[0] = tmp2;
@@ -32,18 +37,17 @@ void	ft_swap(t_list **lst)
 
 void	ft_push(t_list **pile_src, t_list **pile_dest)
 {
-	t_list	*tmp;
-
 	if (!pile_src[0])
 		return ;
-	tmp = ft_lstfirst (pile_src[0]);
-	(pile_src[0]) = (pile_src[0])->next;
 	if (!pile_dest[0])
-		pile_dest[0] = ft_lstnew (tmp->content);
+	{
+		pile_dest[0] = ft_lstnew ((pile_src[0])->content);
+		pile_src[0] = ft_delfirst (pile_src[0]);
+	}
 	else
 	{
-		tmp->next = pile_dest[0];
-		pile_dest[0] = tmp;
+		ft_lstadd_front (pile_dest, ft_lstnew ((pile_src[0])->content));
+		pile_src[0] = ft_delfirst (pile_src[0]);
 	}
 }
 
@@ -56,7 +60,7 @@ void	ft_rotate(t_list **lst)
 	if (ft_lstsize (lst[0]) == 1)
 		return ;
 	tmp = ft_lstfirst (lst[0]);
-	lst[0] = (lst[0])->next;
+	lst[0] = ft_delfirst (lst[0]);
 	ft_lstadd_back (&lst[0], tmp);
 }
 

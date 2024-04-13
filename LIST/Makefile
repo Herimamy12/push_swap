@@ -4,8 +4,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = list.a
 
-SRC = list_utils.c list_next.c \
-		list_tnext.c
+SRC = list_utils.c list_next.c
 
 OBJ = $(SRC:.c=.o)
 

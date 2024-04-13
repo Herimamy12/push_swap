@@ -12,81 +12,62 @@
 
 #include "push_swap.h"
 
-int	*second_step_tab(int nb_word, char **argv)
-{
-	int	i;
-	int	*tab;
-
-	i = 1;
-	tab = (int *)malloc(sizeof (int) * nb_word);
-	if (!tab)
-		return (NULL);
-	while (i <= nb_word)
-	{
-		tab[i - 1] = ft_atol (argv[i]);
-		i++;
-	}
-	return (tab);
-}
-
-int	*first_step_tab(int nb_word, char *argv)
+t_list	*second_step_create(int nb_word, char **argv)
 {
 	int		i;
-	int		*tab;
+	int		tmp;
+	t_list	*stack_a;
+
+	i = 1;
+	while (i <= nb_word)
+	{
+		tmp = ft_atol (argv[i]);
+		if (i == 1)
+			stack_a = ft_lstnew (tmp);
+		else
+			ft_lstadd_back (&stack_a, ft_lstnew (tmp));
+		i++;
+	}
+	return (stack_a);
+}
+
+t_list	*first_step_create(int nb_word, char *argv)
+{
+	int		i;
+	int		tmpi;
 	char	**av;
+	t_list	*stack_a;
 
 	av = ft_split (argv, ' ');
 	i = 0;
-	tab = (int *)malloc(sizeof (int) * nb_word);
-	if (!tab)
-		return (NULL);
 	while (i < nb_word)
 	{
-		tab[i] = ft_atol (av[i]);
+		tmpi = ft_atol (av[i]);
+		if (i == 0)
+			stack_a = ft_lstnew (tmpi);
+		else
+			ft_lstadd_back (&stack_a, ft_lstnew (tmpi));
 		i++;
 	}
 	free_double_char (av);
-	return (tab);
-}
-
-t_list	*first_create(int nb_word, int *tab)
-{
-	int		i;
-	t_list	*tmp;
-	t_list	*stack_a;
-
-	i = 0;
-	tmp = NULL;
-	while (i < nb_word)
-	{
-		if (i == 0)
-			stack_a = ft_lstnew (tab);
-		else
-			tmp = ft_lstnew (tab);
-		ft_lstadd_back (&stack_a, tmp);
-		i++;
-		tab++;
-	}
 	return (stack_a);
 }
 
 t_list	*create_stack(int argc, char **argv)
 {
 	int		nb_word;
-	int		*tab;
 	t_list	*stack_a;
 
 	if (argc == 2)
 	{
 		nb_word = ft_count_word (argv[1], ' ');
-		tab = first_step_tab (nb_word, argv[1]);
+		stack_a = first_step_create (nb_word, argv[1]);
 	}
 	else
 	{
 		nb_word = argc - 1;
-		tab = second_step_tab (nb_word, argv);
+		stack_a = second_step_create (nb_word, argv);
 	}
-	stack_a = first_create (nb_word, tab);
 	return (stack_a);
 }
 
