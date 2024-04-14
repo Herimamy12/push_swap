@@ -31,13 +31,40 @@ int	main(int argc, char **argv)
 	stack_a = create_stack (argc, argv);
 	stack_b = NULL;
 	push_swap (&stack_a, &stack_b);
-	ft_reverse_rotate (&stack_a); ft_push (&stack_a, &stack_b);ft_reverse_rotate (&stack_a);
-	ft_push (&stack_b, &stack_a);;ft_rotate (&stack_a);ft_rotate (&stack_a);
-	ft_printf ("%l\n", stack_a);
+//	ft_printf ("%l\n", stack_a);
 	ft_free_lst (stack_a);
 	ft_free_lst (stack_b);
 	return (0);
 }
+
+/*##############################################*/
+/*												*/
+/*												*/
+/*			   MAIN_TEST_MOUV_MIX				*/
+/*												*/
+/*												*/
+/*##############################################*/
+
+// Test pour 6 valeurs
+
+// int	main(int argc, char **argv)
+// {
+// 	t_list	*stack_a;
+// 	t_list	*stack_b;
+
+// 	if (error_handling (argc, argv))
+// 		return (0);
+// 	stack_a = create_stack (argc, argv);
+// 	stack_b = NULL;
+// 	push_swap (&stack_a, &stack_b);
+// 	ft_reverse_rotate (&stack_a); ft_push (&stack_a, &stack_b);
+// 	ft_reverse_rotate (&stack_a); ft_push (&stack_b, &stack_a);
+// 	ft_rotate (&stack_a);ft_rotate (&stack_a);
+// 	ft_printf ("%l\n", stack_a);
+// 	ft_free_lst (stack_a);
+// 	ft_free_lst (stack_b);
+// 	return (0);
+// }
 
 /*##############################################*/
 /*												*/
@@ -102,7 +129,6 @@ int	main(int argc, char **argv)
 // 	ft_printf ("%l\n\n", pile_b);
 // 	return (0);
 // }
-
 
 /*##############################################*/
 /*												*/
