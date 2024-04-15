@@ -43,6 +43,8 @@ void	ft_solve_three(t_list **stack_a)
 
 	min = min_value (stack_a[0]);
 	max = max_value (stack_a[0]);
+	if (is_sort (stack_a[0]))
+		return ;
 	if (is_reverse_sort (stack_a[0]))
 	{
 		swap_a (stack_a);

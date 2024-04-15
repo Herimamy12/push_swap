@@ -40,9 +40,9 @@ int	find_cibles(int first_v, t_list *stack_a)
 	int	cibles;
 	int	result;
 
-	if (first_v <= min_value (stack_a))
+	if (first_v < min_value (stack_a))
 		return (min_value (stack_a));
-	if (first_v >= max_value (stack_a))
+	if (first_v > max_value (stack_a))
 		return (min_value (stack_a));
 	cibles = stack_a->content;
 	while (stack_a->next != NULL)
@@ -74,7 +74,9 @@ void	ft_solve_cas(t_list **stack_a, t_list **stack_b)
 		while (cibles != first_value (stack_a[0]))
 			rotate_a (stack_a);
 		push_a (stack_b, stack_a);
-		while (!is_sort (stack_a[0]))
-			reverse_rotate_a (stack_a);
+		// while (!is_sort (stack_a[0]))
+		// 	reverse_rotate_a (stack_a);
 	}
+	while (!is_sort (stack_a[0]))
+		reverse_rotate_a (stack_a);
 }
