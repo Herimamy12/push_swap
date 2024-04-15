@@ -36,29 +36,9 @@ void	reverse_rotate_a(t_list **stack_a)
 	ft_printf ("rra\n");
 }
 
-void	ft_solve_three(t_list **stack_a)
+void	rotate_all(t_list **stack_a, t_list **stack_b)
 {
-	int	min;
-	int	max;
-
-	min = min_value (stack_a[0]);
-	max = max_value (stack_a[0]);
-	if (is_sort (stack_a[0]))
-		return ;
-	if (is_reverse_sort (stack_a[0]))
-	{
-		swap_a (stack_a);
-		reverse_rotate_a (stack_a);
-	}
-	else if (max == (stack_a[0])->content)
-		rotate_a (stack_a);
-	else if (min == (stack_a[0])->content)
-	{
-		swap_a (stack_a);
-		rotate_a (stack_a);
-	}
-	else if (max == last_value (stack_a[0]))
-		swap_a (stack_a);
-	else
-		reverse_rotate_a (stack_a);
+	ft_rotate (stack_a);
+	ft_rotate (stack_b);
+	ft_printf ("rr\n");
 }

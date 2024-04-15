@@ -63,9 +63,11 @@ int	median_value(t_list *stack)
 	int	i;
 	int	index;
 
+	i = ft_lstsize (stack);
+	index = (i / 2);
 	i = 0;
-	index = (ft_lstsize (stack) / 2);
-	while (i < index)
+	while (i++ < index)
 		stack = stack->next;
-	return (stack->content);
+	i = stack->content;
+	return (i);
 }

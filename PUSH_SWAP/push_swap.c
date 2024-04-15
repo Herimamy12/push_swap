@@ -36,6 +36,57 @@ int	is_reverse_sort(t_list *stack)
 	return (42);
 }
 
+void	ft_solve_three(t_list **stack_a)
+{
+	int	min;
+	int	max;
+
+	min = min_value (stack_a[0]);
+	max = max_value (stack_a[0]);
+	if (is_sort (stack_a[0]))
+		return ;
+	if (is_reverse_sort (stack_a[0]))
+	{
+		swap_a (stack_a);
+		reverse_rotate_a (stack_a);
+	}
+	else if (max == (stack_a[0])->content)
+		rotate_a (stack_a);
+	else if (min == (stack_a[0])->content)
+	{
+		swap_a (stack_a);
+		rotate_a (stack_a);
+	}
+	else if (max == last_value (stack_a[0]))
+		swap_a (stack_a);
+	else
+		reverse_rotate_a (stack_a);
+}
+
+void	ft_solve_cas(t_list **stack_a, t_list **stack_b)
+{
+	int	targets;
+	int	first_b;
+
+	while (ft_lstsize (stack_a[0]) > 3)
+		push_b (stack_a, stack_b);
+	ft_solve_three (stack_a);
+	while (ft_lstsize (stack_b[0]) > 0)
+	{
+		first_b = first_value (stack_b[0]);
+		targets = find_targets (first_b, stack_a[0]);
+		while (targets != first_value (stack_a[0]))
+		{
+			if (check_move_rotate (stack_a[0], targets))
+				rotate_a (stack_a);
+			else
+				reverse_rotate_a (stack_a);
+		}
+		push_a (stack_b, stack_a);
+	}
+	ft_last_solve (stack_a);
+}
+
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
 	if (is_sort (stack_a[0]))
@@ -47,15 +98,9 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		swap_a (stack_a);
 		return ;
 	}
-	else if (ft_lstsize (stack_a[0]) == 3)
-	{
-		ft_solve_three (stack_a);
-		return ;
-	}
 	else
 	{
 		ft_solve_cas (stack_a, stack_b);
 		return ;
 	}
-	ft_printf ("mbola tsy vita\n");
 }

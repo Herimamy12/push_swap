@@ -12,13 +12,6 @@
 
 #include "push_swap.h"
 
-void	rotate_all(t_list **stack_a, t_list **stack_b)
-{
-	ft_rotate (stack_a);
-	ft_rotate (stack_b);
-	ft_printf ("rr\n");
-}
-
 void	reverse_rotate_all(t_list **stack_a, t_list **stack_b)
 {
 	ft_reverse_rotate (stack_a);
@@ -26,57 +19,77 @@ void	reverse_rotate_all(t_list **stack_a, t_list **stack_b)
 	ft_printf ("rrr\n");
 }
 
+/*##############################################################*/
+/*																*/
+/*																*/
+/*		   			 idée d'amélioration						*/
+/*																*/
+/*																*/
+/*##############################################################*/
+/*
 void	ft_reverse_sort_stack_b(t_list **stack_b)
 {
-//	int	cibles;
-
 	if (is_reverse_sort (stack_b[0]))
 		return ;
 }
+*/
+/*##############################################################*/
 
-int	find_cibles(int first_v, t_list *stack_a)
+int	find_targets(int first_v, t_list *stack_a)
 {
 	int	tmp;
-	int	cibles;
+	int	targets;
 	int	result;
 
 	if (first_v < min_value (stack_a))
 		return (min_value (stack_a));
 	if (first_v > max_value (stack_a))
 		return (min_value (stack_a));
-	cibles = stack_a->content;
+	targets = stack_a->content;
 	while (stack_a->next != NULL)
 	{
-		tmp = cibles - first_v;
+		tmp = targets - first_v;
 		result = (stack_a->next)->content - first_v;
-		if (tmp < 0 || (tmp > result))
-			cibles = (stack_a->next)->content;
+		if (tmp < 0 || ((tmp > result) && result > 0))
+			targets = (stack_a->next)->content;
 		stack_a = stack_a->next;
 	}
-	return (cibles);
+	return (targets);
 }
 
-void	ft_solve_cas(t_list **stack_a, t_list **stack_b)
+int	find_position(int value, t_list *lst)
 {
-	int	cibles;
-	int	first_b;
+	int	position;
 
-	while (ft_lstsize (stack_a[0]) > 3)
+	position = 0;
+	while ((lst->content) != value && lst)
 	{
-		push_b (stack_a, stack_b);
-		ft_reverse_sort_stack_b (stack_b);
+		position++;
+		lst = lst->next;
 	}
-	ft_solve_three (stack_a);
-	while (ft_lstsize (stack_b[0]) > 0)
-	{
-		first_b = first_value (stack_b[0]);
-		cibles = find_cibles (first_b, stack_a[0]);
-		while (cibles != first_value (stack_a[0]))
-			rotate_a (stack_a);
-		push_a (stack_b, stack_a);
-		// while (!is_sort (stack_a[0]))
-		// 	reverse_rotate_a (stack_a);
-	}
+	return (position);
+}
+
+int	check_move_rotate(t_list *stack_a, int targets)
+{
+	int	targets_position;
+	int	mdn_position;
+
+	targets_position = find_position (targets, stack_a);
+	mdn_position = find_position (median_value (stack_a), stack_a);
+	if ((mdn_position - targets_position) >= 0)
+		return (1);
+	else
+		return (0);
+}
+
+void	ft_last_solve(t_list **stack_a)
+{
 	while (!is_sort (stack_a[0]))
-		reverse_rotate_a (stack_a);
+	{
+		if (check_move_rotate (stack_a[0], min_value (stack_a[0])))
+			rotate_a (stack_a);
+		else
+			reverse_rotate_a (stack_a);
+	}
 }

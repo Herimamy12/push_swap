@@ -40,6 +40,7 @@ int		first_value(t_list *stack);
 int		last_value(t_list *stack);
 int		min_value(t_list *stack);
 int		max_value(t_list *stack);
+int		median_value(t_list *stack);
 void	swap_a(t_list **stack_a);
 void	push_b(t_list **stack_a, t_list **stack_b);
 void	rotate_a(t_list **stack_a);
@@ -53,5 +54,9 @@ void	swap_all(t_list **stack_a, t_list **stack_b);
 void	rotate_all(t_list **stack_a, t_list **stack_b);
 void	reverse_rotate_all(t_list **stack_a, t_list **stack_b);
 void	ft_solve_cas(t_list **stack_a, t_list **stack_b);
+int		find_targets(int first_v, t_list *stack_a);
+int		find_position(int value, t_list *lst);
+int		check_move_rotate(t_list *stack_a, int targets);
+void	ft_last_solve(t_list **stack_a);
 
 #endif
