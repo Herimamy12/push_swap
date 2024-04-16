@@ -61,7 +61,7 @@ int	check_move_rotate(t_list *stack_a, int targets)
 
 	targets_position = find_position (targets, stack_a);
 	mdn_position = find_position (median_value (stack_a), stack_a);
-	if ((mdn_position - targets_position) > 0)
+	if ((mdn_position - targets_position) >= 0)
 		return (1);
 	else
 		return (0);
