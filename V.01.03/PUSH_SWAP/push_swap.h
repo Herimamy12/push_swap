@@ -61,5 +61,8 @@ void	ft_last_solve(t_list **stack_a);
 int		find_send_targets(int first_v, t_list *stack_b);
 void	solve_send_element(t_list **stack_a, t_list **stack_b);
 void	solve_return_element(t_list **stack_a, t_list **stack_b);
+int		count_stack_b_mouv(int value, t_list *stack);
+int		count_easy_mouv(t_list *stack_a, t_list *stack_b, int pos_easy);
+void	check_the_easy_mouv(t_list **stack_a, t_list **stack_b);
 
 #endif
