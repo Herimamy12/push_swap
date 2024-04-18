@@ -88,11 +88,13 @@ void	check_the_easy_mouv(t_list **stack_a, t_list **stack_b)
 	stk_pos = count_easy_mouv (stack_a[0], stack_b[0], stk_pos);
 	if (stk_pos <= find_position (median_value (stack_a[0]), stack_a[0]))
 	{
+// ato izy no asina condition amle aodinana anle B fa mila jerena kely fotsiny le value anle A sy targets any @ B		
 		while (i++ < stk_pos)
 			rotate_a (stack_a);
 	}
 	else
 	{
+// de ato n 2e etape otrzay iany		
 		pos_lastv = find_position(last_value(stack_a[0]), stack_a[0]);
 		while (i++ < (pos_lastv + 1) - stk_pos)
 			reverse_rotate_a (stack_a);
