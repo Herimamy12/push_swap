@@ -77,29 +77,85 @@ int	count_easy_mouv(t_list *stack_a, t_list *stack_b, int pos_easy)
 	return (pos_easy);
 }
 
-int	find_value_in_pos()
+int	find_value_in_pos(int pos, t_list *stack)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < pos)
+		stack = stack->next;
+	return (stack->content);
+}
+
+int	check_rr_all_mouv(int value_a, t_list **stack_a, t_list **stack_b, int pos)
+{
+	int i;
+	int	targets;
+
+	i = 0;
+	targets = find_send_targets (value_a, stack_b[0]);
+	if (check_move_rotate (stack_b[0], targets))
+	{
+		while (i < pos && targets != first_value (stack_b[0]))
+		{
+			rotate_all (stack_a, stack_b);
+			i++;
+		}
+	}
+	else
+		return (0);
+	return (i);
+}
+
+int	check_rrr_all_mouv(int value_a, t_list **stack_a, t_list **stack_b, int pos)
+{
+	int i;
+	int	targets;
+
+	i = 0;
+	targets = find_send_targets (value_a, stack_b[0]);
+	if (check_move_rotate (stack_b[0], targets))
+		return (0);
+	else
+	{
+		while (i < pos && targets != first_value (stack_b[0]))
+		{
+			reverse_rotate_all (stack_a, stack_b);
+			i++;
+		}
+	}
+	return (i);
+}
 
 void	check_the_easy_mouv(t_list **stack_a, t_list **stack_b)
 {
 	int	i;
 	int	stk_pos;
+	int	value_a;
 	int	pos_lastv;
 
 	i = 0;
 	stk_pos = 0;
 	stk_pos = count_easy_mouv (stack_a[0], stack_b[0], stk_pos);
+	value_a = find_value_in_pos (stk_pos, stack_a[0]);
 	if (stk_pos <= find_position (median_value (stack_a[0]), stack_a[0]))
 	{
-// ato izy no asina condition amle aodinana anle B fa mila jerena kely fotsiny le value anle A sy targets any @ B
+		i = check_rr_all_mouv (value_a, stack_a, stack_b, stk_pos);
 		while (i++ < stk_pos)
+		{
 			rotate_a (stack_a);
+//			i++;
+		}
 	}
 	else
 	{
-// de ato n 2e etape otrzay iany
 		pos_lastv = find_position(last_value(stack_a[0]), stack_a[0]);
+		i = check_rrr_all_mouv (value_a, stack_a, stack_b, ((pos_lastv + 1) - stk_pos));
 		while (i++ < (pos_lastv + 1) - stk_pos)
+		{
 			reverse_rotate_a (stack_a);
+//			i++;
+		}
 	}
 }
 
