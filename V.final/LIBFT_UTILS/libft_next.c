@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   return_and_send.c                                  :+:      :+:    :+:   */
+/*   libft_next.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nherimam <nherimam@student.42antanana      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 10:00:19 by nherimam          #+#    #+#             */
-/*   Updated: 2024/04/19 10:00:22 by nherimam         ###   ########.fr       */
+/*   Created: 2024/04/08 13:36:16 by nherimam          #+#    #+#             */
+/*   Updated: 2024/04/08 13:36:19 by nherimam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	solve_return_element(t_list **stack_a, t_list **stack_b)
+int	ft_count_word(char const *s, char c)
 {
-	int	targets;
-	int	first_b;
+	int	i;
+	int	count;
 
-	first_b = first_value (stack_b[0]);
-	targets = find_targets (first_b, stack_a[0]);
-	while (targets != first_value (stack_a[0]))
+	if (!s)
+		return (0);
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
 	{
-		if (check_move_rotate (stack_a[0], targets))
-			rotate_a (stack_a);
-		else
-			reverse_rotate_a (stack_a);
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] && (s[i] != c))
+			count++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
+	return (count);
+}
+
+int	ft_isdigit(int c)
+{
+	return ('0' <= c && c <= '9');
 }

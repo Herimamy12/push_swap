@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   return_and_send.c                                  :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nherimam <nherimam@student.42antanana      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 10:00:19 by nherimam          #+#    #+#             */
-/*   Updated: 2024/04/19 10:00:22 by nherimam         ###   ########.fr       */
+/*   Created: 2024/04/08 09:31:30 by nherimam          #+#    #+#             */
+/*   Updated: 2024/04/08 09:31:31 by nherimam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	solve_return_element(t_list **stack_a, t_list **stack_b)
-{
-	int	targets;
-	int	first_b;
+# include "../PRINTF/ft_printf.h"
 
-	first_b = first_value (stack_b[0]);
-	targets = find_targets (first_b, stack_a[0]);
-	while (targets != first_value (stack_a[0]))
-	{
-		if (check_move_rotate (stack_a[0], targets))
-			rotate_a (stack_a);
-		else
-			reverse_rotate_a (stack_a);
-	}
-}
+long	ft_atol(const char *nptr);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	**ft_split(char const *s, char c);
+int		ft_count_word(char const *s, char c);
+int		ft_isdigit(int c);
+
+#endif
