@@ -64,3 +64,15 @@ void	free_double_char(char **av)
 	}
 	free (av);
 }
+
+int	is_sort(t_list *stack)
+{
+	while (stack->next != NULL)
+	{
+		if ((stack->next)->content > stack->content)
+			stack = stack->next;
+		else
+			return (0);
+	}
+	return (42);
+}

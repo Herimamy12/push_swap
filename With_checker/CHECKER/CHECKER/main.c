@@ -12,22 +12,71 @@
 
 #include "push_swap.h"
 
-int	cmd_stack_a(char *cmd, t_list **stack_a)
+int	cmd_stack_a(char *cmd, t_list **stack_a, t_list **stack_b)
 {
 	if (ft_strcmp (cmd, "sa\n"))
 	{
 		swap_a (stack_a);
 		return (42);
 	}
+	if (ft_strcmp (cmd, "ra\n"))
+	{
+		rotate_a (stack_a);
+		return (42);
+	}
+	if (ft_strcmp (cmd, "rra\n"))
+	{
+		reverse_rotate_a (stack_a);
+		return (42);
+	}
+	if (ft_strcmp (cmd, "pa\n"))
+	{
+		push_a (stack_b, stack_a);
+		return (42);
+	}
 	return (0);
 }
 
-int	cmd_stack_b(char *cmd, t_list **stack_b)
+int	cmd_stack_b(char *cmd, t_list **stack_a, t_list **stack_b)
 {
 	if (ft_strcmp (cmd, "sb\n"))
 	{
-//		if (ft_lstsize (stack_b[0]) >= 2)
-			swap_b (stack_b);
+		swap_b (stack_b);
+		return (42);
+	}
+	if (ft_strcmp (cmd, "rb\n"))
+	{
+		rotate_b (stack_b);
+		return (42);
+	}
+	if (ft_strcmp (cmd, "rrb\n"))
+	{
+		reverse_rotate_b (stack_b);
+		return (42);
+	}
+	if (ft_strcmp (cmd, "pb\n"))
+	{
+		push_b (stack_a, stack_b);
+		return (42);
+	}
+	return (0);
+}
+
+int	cmd_all_mouv(char *cmd, t_list **stack_a, t_list **stack_b)
+{
+	if (ft_strcmp (cmd, "ss\n"))
+	{
+		swap_all (stack_b, stack_a);
+		return (42);
+	}
+	if (ft_strcmp (cmd, "rr\n"))
+	{
+		rotate_all (stack_b, stack_a);
+		return (42);
+	}
+	if (ft_strcmp (cmd, "rrr\n"))
+	{
+		reverse_rotate_all (stack_b, stack_a);
 		return (42);
 	}
 	return (0);
@@ -42,20 +91,24 @@ void	check(t_list **stack_a, t_list **stack_b)
 	cmd = get_next_line(STDIN_FILENO);
 	while (cmd)
 	{
-		i = cmd_stack_a(cmd, stack_a);
+		i = cmd_stack_a (cmd, stack_a, stack_b);
 		if (i == 0)
-			i = cmd_stack_b(cmd, stack_b);
-		// if (ft_strcmp (cmd, "sa\n"))
-		// 	swap_a (stack_a);
+			i = cmd_stack_b (cmd, stack_a, stack_b);
+		if (i == 0)
+			i = cmd_all_mouv (cmd, stack_a, stack_b);
+		free (cmd);
+		cmd = get_next_line (STDIN_FILENO);
 		if (i == 0)
 		{
+			free (cmd);
 			write (2, "Error\n", 6);
 			return ;
 		}
-		cmd = get_next_line (STDIN_FILENO);
-		if (stack_b[0])
-			swap_b (stack_b);
 	}
+	if (is_sort (stack_a[0]) && ft_lstsize (stack_b[0]) == 0)
+		ft_printf ("OK\n");
+	else
+		ft_printf ("KO\n");
 }
 
 int	main(int argc, char **argv)
@@ -73,7 +126,6 @@ int	main(int argc, char **argv)
 	stack_a = create_stack (argc, argv);
 	stack_b = NULL;
 	check (&stack_a, &stack_b);
-	ft_printf ("%l\n", stack_a);
 	ft_free_lst (stack_a);
 	ft_free_lst (stack_b);
 	return (0);

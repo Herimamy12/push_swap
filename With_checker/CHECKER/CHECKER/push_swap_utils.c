@@ -78,3 +78,9 @@ void	ft_reverse_rotate(t_list **lst)
 	tmp->next = lst[0];
 	lst[0] = tmp;
 }
+
+void	reverse_rotate_all(t_list **stack_a, t_list **stack_b)
+{
+	ft_reverse_rotate (stack_a);
+	ft_reverse_rotate (stack_b);
+}

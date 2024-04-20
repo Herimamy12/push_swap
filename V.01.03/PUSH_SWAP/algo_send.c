@@ -142,20 +142,14 @@ void	check_the_easy_mouv(t_list **stack_a, t_list **stack_b)
 	{
 		i = check_rr_all_mouv (value_a, stack_a, stack_b, stk_pos);
 		while (i++ < stk_pos)
-		{
 			rotate_a (stack_a);
-//			i++;
-		}
 	}
 	else
 	{
 		pos_lastv = find_position(last_value(stack_a[0]), stack_a[0]);
 		i = check_rrr_all_mouv (value_a, stack_a, stack_b, ((pos_lastv + 1) - stk_pos));
 		while (i++ < (pos_lastv + 1) - stk_pos)
-		{
 			reverse_rotate_a (stack_a);
-//			i++;
-		}
 	}
 }
 
