@@ -38,7 +38,7 @@ char	*ft_restash(char *stash)
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
-	if (!stash[i])
+	if (!stash[i] || stash[i + 1] == '\0')
 	{
 		free(stash);
 		stash = NULL;

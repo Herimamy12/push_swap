@@ -96,14 +96,14 @@ void	check(t_list **stack_a, t_list **stack_b)
 			i = cmd_stack_b (cmd, stack_a, stack_b);
 		if (i == 0)
 			i = cmd_all_mouv (cmd, stack_a, stack_b);
-		free (cmd);
-		cmd = get_next_line (STDIN_FILENO);
 		if (i == 0)
 		{
 			free (cmd);
 			write (2, "Error\n", 6);
 			return ;
 		}
+		free (cmd);
+		cmd = get_next_line (STDIN_FILENO);
 	}
 	if (is_sort (stack_a[0]) && ft_lstsize (stack_b[0]) == 0)
 		ft_printf ("OK\n");
