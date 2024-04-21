@@ -19,8 +19,9 @@ int	main(int argc, char **argv)
 
 	if (error_handling (argc, argv))
 		return (0);
-	stack_a = create_stack (argc, argv);
 	stack_b = NULL;
+	stack_a = NULL;
+	stack_a = create_stack (argc, argv);
 	push_swap (&stack_a, &stack_b);
 	ft_free_lst (stack_a);
 	ft_free_lst (stack_b);

@@ -67,6 +67,8 @@ void	free_double_char(char **av)
 
 int	is_sort(t_list *stack)
 {
+	if (ft_lstsize (stack) == 0)
+		return (0);
 	while (stack->next != NULL)
 	{
 		if ((stack->next)->content > stack->content)

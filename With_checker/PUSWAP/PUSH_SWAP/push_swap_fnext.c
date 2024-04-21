@@ -61,6 +61,8 @@ t_list	*create_stack(int argc, char **argv)
 	if (argc == 2)
 	{
 		nb_word = ft_count_word (argv[1], ' ');
+		if (nb_word == 0)
+			return (NULL);
 		stack_a = first_step_create (nb_word, argv[1]);
 	}
 	else

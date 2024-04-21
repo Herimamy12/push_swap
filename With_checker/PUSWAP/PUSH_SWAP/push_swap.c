@@ -14,6 +14,8 @@
 
 int	is_sort(t_list *stack)
 {
+	if (ft_lstsize (stack) == 0)
+		return (0);
 	while (stack->next != NULL)
 	{
 		if ((stack->next)->content > stack->content)
@@ -83,6 +85,8 @@ void	ft_solve_cas(t_list **stack_a, t_list **stack_b)
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
+	if (!stack_a[0])
+		return ;
 	if (is_sort (stack_a[0]))
 		return ;
 	if (ft_lstsize (stack_a[0]) == 2)
