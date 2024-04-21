@@ -1,6 +1,4 @@
-NAME = push_swap
-
-LIBNAME = libpush_swap.a
+NAME = libpush_swap.a
 
 CC = gcc
 
@@ -19,13 +17,7 @@ OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(LIBNAME)
-		$(CC) -o $@ libpush_swap.a \
-		../PRINTF/libftprintf.a \
-		../LIBFT_UTILS/libft.a \
-		../LIST/list.a
-
-$(LIBNAME) : $(OBJS)
+$(NAME) : $(OBJS)
 		make -C ../LIBFT_UTILS/
 		make -C ../PRINTF/
 		make -C ../LIST/
@@ -37,15 +29,12 @@ clean :
 		make clean -C ../LIST/
 		rm -f $(OBJS)
 
-libfclean : clean
+fclean : clean
 		make fclean -C ../LIBFT_UTILS/
 		make fclean -C ../PRINTF/
 		make fclean -C ../LIST/
-		rm -f $(LIBNAME)
-
-fclean : clean libfclean
 		rm -f $(NAME)
 
 re : fclean all
 
-.PHONY : all clean libfclean fclean re
+.PHONY : all clean fclean re
