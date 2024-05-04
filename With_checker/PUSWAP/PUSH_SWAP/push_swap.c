@@ -18,7 +18,7 @@ int	is_sort(t_list *stack)
 		return (0);
 	while (stack->next != NULL)
 	{
-		if ((stack->next)->content > stack->content)
+		if ((long)(stack->next)->content > (long)stack->content)
 			stack = stack->next;
 		else
 			return (0);
@@ -30,7 +30,7 @@ int	is_reverse_sort(t_list *stack)
 {
 	while (stack->next != NULL)
 	{
-		if ((stack->next)->content < stack->content)
+		if ((long)(stack->next)->content < (long)stack->content)
 			stack = stack->next;
 		else
 			return (0);

@@ -1,4 +1,4 @@
-NAME = checker
+NAME = ../checker
 
 CC = gcc
 

@@ -1,4 +1,4 @@
-NAME = push_swap
+NAME = ../push_swap
 
 CC = gcc
 

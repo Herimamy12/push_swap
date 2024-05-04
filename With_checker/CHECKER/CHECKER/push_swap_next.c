@@ -84,6 +84,8 @@ int	third_check_error(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		if (ft_count_word (argv[i], ' ') > 1)
+			return (42);
 		if (first_check_error (argv[i]))
 			return (42);
 		if (second_check_error (argv[i]))
