@@ -1,3 +1,4 @@
+![push_swap](push_swap.png)
 # push_swap
 
 `push_swap` est un projet de l'école 42 qui consiste à trier une pile de nombres en utilisant un nombre minimal d'opérations. Le projet comprend une série d'opérations à appliquer à une pile (A) et une autre pile (B), avec l'objectif de trier la pile A dans l'ordre croissant. Il inclut également un bonus : le **checker**, un programme qui vérifie si la pile A est triée après avoir effectué les opérations.
